@@ -23,11 +23,11 @@ export const getInitUser = () => {
   }
 };
 
-export const initState = {
+const initState = {
   user: getInitUser(),
 };
 
-export const authReducers = (state: AuthState, action: AuthActions): AuthState => {
+const authReducers = (state: AuthState, action: AuthActions): AuthState => {
   switch (action.type) {
     case AuthActionTypes.LOG_IN:
       return ({
@@ -46,7 +46,7 @@ export const authReducers = (state: AuthState, action: AuthActions): AuthState =
   }
 };
 
-const Context = createContext({
+const AuthContext = createContext({
   user: null as AuthState['user'],
   login: (payload: LoginAction['payload']) => {},
   logout: () => {},
@@ -67,14 +67,13 @@ const AuthWrapper = (props: { children: ReactNode }) => {
   }, []);
 
   return (
-    <Context.Provider value={{
-      ...state,
+    <AuthContext.Provider value={{
       user: state.user,
       login: handleLogin,
       logout: handleLogout,
     }}>
       {props.children}
-    </Context.Provider>
+    </AuthContext.Provider>
   );
 };
 
