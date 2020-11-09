@@ -1,4 +1,5 @@
 import { ApolloCache, useMutation } from "@apollo/client";
+import { PostFormProps } from "../../../components/common/types";
 import CREATE_POST from "../../../graphql/schemas/createPost.schema";
 import QUERY_POSTS, { QueriedPosts } from "../../../graphql/schemas/queryPosts.schema";
 import useForm from "../../../lib/custom-hooks/useForm";
@@ -9,7 +10,7 @@ export interface UsePostFormOptions {
 
 export const updatePost = ({
   onChange,
-}: ReturnType<typeof useForm>) => (cache: ApolloCache<any>, result: any) => {
+}: { onChange: PostFormProps['onChange'] }) => (cache: ApolloCache<any>, result: any) => {
   const data = cache.readQuery<QueriedPosts>({
     query: QUERY_POSTS,
   });
@@ -26,8 +27,8 @@ const usePostForm = () => {
     initFormState: {
       content: '',
     },
-    onSubmitCallback: handleCreatePost,
-  }) as any;
+    onSubmitCallback: handleCreatePost as any,
+  });
   
   const {
     values, onChange, onSubmit,

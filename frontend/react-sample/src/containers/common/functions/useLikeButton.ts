@@ -6,7 +6,7 @@ import useToggle from "../../../lib/custom-hooks/useToggle";
 import { ID, SingleLike, SinglePost } from "../../../types";
 
 export interface UseLikeButtonOptions {
-  user: User
+  user: User | null
   post: SinglePost
 }
 

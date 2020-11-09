@@ -28,14 +28,14 @@ export interface DeleteButtonProps {
 
 export interface LikeButtonProps {
   isLiked: boolean
-  user: User
+  user: User | null
   post: SinglePost
   onLikePost: Callback
 }
 
 export interface PostCardItemProps {
   post: SinglePost
-  user: User
+  user: User | null
 }
 
 export interface PostFormProps {

@@ -1,12 +1,12 @@
 import React, { useCallback, useReducer } from 'react';
 import { createContext, ReactNode } from "react";
 import JwtHandlers from "../lib/Handlers/JwtHandlers";
+import { BasicData, ID } from '../types';
 import authActions, { AuthActions, AuthActionTypes, LoginAction } from "./authActions";
 
-export interface User {
-  username: string
+export interface User extends BasicData {
   email: string
-  jwtToken: string
+  token: string
 }
 export interface AuthState {
   user: User | null
@@ -56,7 +56,7 @@ const AuthWrapper = (props: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(authReducers, initState);
 
   const handleLogin = useCallback((payload: LoginAction['payload']) => {
-    JwtHandlers.setToken(payload.user.jwtToken);
+    JwtHandlers.setToken(payload.user.token);
     const action = authActions.login(payload);
     dispatch(action);
   }, []);

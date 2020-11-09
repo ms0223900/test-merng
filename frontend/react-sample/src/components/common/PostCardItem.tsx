@@ -17,7 +17,7 @@ const PostCardItem = ({
     content, createdAt, id, username, likeCount, commentCount, likes 
   } = post;
   const createdAtTime = moment(createdAt).fromNow(true);
-  const isThisUser = user && user.username === username;
+  const isThisUser = (user && user.username) === username;
 
   return (
     <Card fluid>
