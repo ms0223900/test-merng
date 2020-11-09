@@ -1,7 +1,7 @@
 import { ApolloError } from "@apollo/client";
 import { User } from "../../constants/context";
 import useForm from "../../lib/custom-hooks/useForm";
-import { Callback, SinglePost } from "../../types";
+import { Callback, ID, SinglePost } from "../../types";
 
 export interface LoginedMenuBarProps {
   user: User
@@ -14,12 +14,13 @@ export interface LogoutedMenuBarProps {
   onClickMenuItem: (menuItem: MenuActiveItemKeys) => () => any
 }
 
-export interface MenuBarProps extends LoginedMenuBarProps, LogoutedMenuBarProps {
+export interface MenuBarProps extends Omit<LoginedMenuBarProps, 'user'>, LogoutedMenuBarProps {
+  user: User | null
 }
 
 export interface DeleteButtonProps {
-  commentId: string
-  postId: string
+  commentId?: ID
+  postId: ID
   isPopupOpen: boolean
   onConfirmDelete: Callback
   onOpenPopup: (isOpen: boolean) => Callback
@@ -41,5 +42,5 @@ export interface PostFormProps {
   inputValue: string
   onChange: ReturnType<typeof useForm>['onChange']
   onSubmit: ReturnType<typeof useForm>['onSubmit']
-  error: ApolloError
+  error: ApolloError | undefined
 }

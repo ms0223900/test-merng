@@ -2,6 +2,8 @@ import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
+import DeleteButtonContainer from '../../containers/common/DeleteButtonContainer';
+import LikeButtonContainer from '../../containers/common/LikeButtonContainer';
 import DeleteButton from './DeleteButton';
 import LikeButton from './LikeButton';
 import MyPopupWrapper from './MyPopupWrapper';
@@ -32,7 +34,7 @@ const PostCardItem = ({
         <Card.Description>{content}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <LikeButton user={user} post={post} />
+        <LikeButtonContainer user={user} post={post} />
         <MyPopupWrapper content="Comment on post">
           <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
             <Button color="blue" basic>
@@ -44,7 +46,7 @@ const PostCardItem = ({
           </Button>
         </MyPopupWrapper>
         {isThisUser && (
-          <DeleteButton postId={id} />
+          <DeleteButtonContainer postId={id} />
         )}
       </Card.Content>
     </Card>

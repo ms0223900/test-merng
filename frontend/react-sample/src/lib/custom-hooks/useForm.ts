@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { useState } from "react";
 import { Callback } from "../../types";
 
-export interface UseFormOptions {
-  initFormState?: object
+export interface UseFormOptions<FormState extends { [x: string]: any }> {
+  initFormState: FormState
   onSubmitCallback?: Callback
 }
 
-const useForm = ({
-  initFormState={},
+function useForm<FormState extends { [x: string]: any }>({
+  initFormState,
   onSubmitCallback,
-}: UseFormOptions) => {
+}: UseFormOptions<FormState>) {
   const [values, setValues] = useState(initFormState);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

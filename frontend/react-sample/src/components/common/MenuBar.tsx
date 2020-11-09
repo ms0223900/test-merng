@@ -11,7 +11,7 @@ const MenuBar = (props: MenuBarProps) => {
   return (
     <>
       {user ? (
-        <LoginedMenuBar {...props} />
+        <LoginedMenuBar {...props} user={user} />
       ) : (
         <LogoutedMenuBar {...props} />
       )}

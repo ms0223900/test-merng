@@ -46,7 +46,7 @@ const authReducers = (state: AuthState, action: AuthActions): AuthState => {
   }
 };
 
-const AuthContext = createContext({
+export const AuthContext = createContext({
   user: null as AuthState['user'],
   login: (payload: LoginAction['payload']) => {},
   logout: () => {},
