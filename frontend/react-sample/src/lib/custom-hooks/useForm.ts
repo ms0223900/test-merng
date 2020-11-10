@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Callback } from "../../types";
 
 export interface UseFormOptions<FormState extends { [x: string]: any }> {
   initFormState: FormState
   onSubmitCallback?: Callback
+}
+export interface UseFormResult<FormState extends { [x: string]: any }> {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => any,
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => any,
+  values: FormState,
 }
 
 function useForm<FormState extends { [x: string]: any }>({
@@ -22,10 +27,15 @@ function useForm<FormState extends { [x: string]: any }>({
     onSubmitCallback && onSubmitCallback();
   };
 
+  const handleSetValue = useCallback((name: keyof FormState) => (value: string) => {
+    setValues(_values => ({ ..._values, [name]: value }));
+  }, []);
+
   return {
     onChange,
     onSubmit,
-    values
+    handleSetValue,
+    values,
   };
 };
 
