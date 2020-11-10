@@ -20,7 +20,10 @@ export const updatePostQuery = ({
     const cacheData = cache.readQuery<QueriedPosts>({
       query: QUERY_POSTS,
     });
-    const newData = cacheData ? cacheData.getPosts.filter(p => p.id !== postId) : [];
+    const newData = cacheData ? {
+      getPosts: cacheData.getPosts.filter(p => p.id !== postId),
+    } : [];
+    console.log(newData);
     cache.writeQuery({
       query: QUERY_POSTS, data: newData,
     });

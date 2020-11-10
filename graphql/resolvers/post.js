@@ -69,15 +69,15 @@ const deletePost = async(_, { postId, }, ctx) => {
 }
 
 const likePost = async(_, { postId, }, ctx) => {
-  const user = checkAuth(ctx)
+  const { username } = checkAuth(ctx)
   const post = await Post.findById(postId)
   
   if(post) {
     //toggle like
-    const isThisPostLiked = post.likes.find(l => l.username === user.username)
+    const isThisPostLiked = post.likes.find(l => l.username === username)
     
     if(isThisPostLiked) {
-      const filteredLikes = post.likes.filter(l => l.username !== user.username)
+      const filteredLikes = post.likes.filter(l => l.username !== username)
       post.likes = filteredLikes
     } 
     else {

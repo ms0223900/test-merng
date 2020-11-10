@@ -20,14 +20,17 @@ const useLikeButton = ({
   } = useToggle(false);
 
   const [handleLikePost] = useMutation(LIKE_POST, {
-    variables: { postId, }
+    variables: { postId, },
+    onError(err) {
+      console.log(err);
+    }
   });
 
   useEffect(() => {
     if (user && likeList.find((like) => like.username === user.username)) {
       setLiked(true);
     } else setLiked(false);
-  }, [user, likeList]);
+  }, [user, likeList, setLiked]);
 
   return ({
     isLiked,
