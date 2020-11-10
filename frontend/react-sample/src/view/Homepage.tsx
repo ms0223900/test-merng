@@ -50,6 +50,9 @@ function Homepage() {
               ))}
           </Transition.Group>
         )}
+        {posts.length === 0 && (
+          <h3 style={{ textAlign: 'center', }}>{'No posts yet :('}</h3>
+        )}
       </Grid.Row>
     </Grid>
   );

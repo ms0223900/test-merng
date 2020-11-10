@@ -5,7 +5,7 @@ import DeleteButtonContainer from '../../../containers/common/DeleteButtonContai
 import { CommentItemProps } from './types';
 
 const CommentItem = ({
-  isThisUserComment, postId, comment
+  isThisUserComment, postId, comment,
 }: CommentItemProps) => {
   
   return (

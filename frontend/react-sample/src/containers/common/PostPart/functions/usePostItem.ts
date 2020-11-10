@@ -44,6 +44,7 @@ const usePostItem = () => {
   });
 
   const onDeletePostCallback = useCallback(() => {
+    window.alert('Delete success!');
     history.push('/');
   }, [history]);
 

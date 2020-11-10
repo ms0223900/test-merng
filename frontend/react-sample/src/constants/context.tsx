@@ -13,12 +13,16 @@ export interface AuthState {
 }
 
 export const getInitUser = () => {
-  const checkTokenIsExpired = JwtHandlers.checkTokenIsExpired();
+  if(!JwtHandlers.getToken()) {
+    return null;
+  }
 
+  const checkTokenIsExpired = JwtHandlers.checkTokenIsExpired();
   if(checkTokenIsExpired) {
     JwtHandlers.removeToken();
     return null;
-  } else {
+  } 
+  else {
     return JwtHandlers.getDecodedToken() as User;
   }
 };

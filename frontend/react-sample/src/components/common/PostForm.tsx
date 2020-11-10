@@ -25,7 +25,7 @@ const PostForm = ({
         <Form.Field>
           <Form.Input
             placeholder="Hi World!"
-            name="body"
+            name="content"
             onChange={onChange}
             value={inputValue}
             error={error ? true : false}

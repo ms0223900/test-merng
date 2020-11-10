@@ -29,7 +29,7 @@ const PostItem = (props: PostPartProps) => {
           <AvatarImage />
         </Grid.Column>
         <Grid.Column width={10}>
-          <PostContent {...props} isThisUser={isThisUser} />
+          <PostContent {...props} isThisUser={isThisUser} onDeleteCallback={props.onDeleteCallback} />
           {user && (
             <PostCommentForm {...props} />
           )}

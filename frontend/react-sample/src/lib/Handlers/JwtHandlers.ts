@@ -22,7 +22,8 @@ const JwtHandlers = {
   },
 
   getDecodedToken() {
-    return jwtDecode(this.getToken());
+    const token = this.getToken();
+    return jwtDecode(token);
   },
 };
 
