@@ -3,7 +3,7 @@
     <ElButton @click="handleLikePost">
         <i v-if="user && isLiked" class="el-icon-star-on" />
         <i v-else class="el-icon-star-off" />
-      {{ post.likeCount || 0 }}
+      {{ likeCount }}
     </ElButton>
   </ElTooltip>
 </template>
@@ -28,6 +28,9 @@ export default {
   computed: {
     toolTipContent() {
       return (this.isLiked && this.user) ? 'Unlike' : 'Like';
+    },
+    likeCount() {
+      return this.post.likeCount || 0;
     },
   },
   emits: [
