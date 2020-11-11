@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
     <DeleteButton :isPopupOpen="toggle" @openPopup="setToggle" />
+    <LikeButton :user="null" :post="{}" :isLiked="true" />
   </div>
 </template>
 
 <script lang="ts">
 import DeleteButton from '@/components/common/DeleteButton.vue';
+import LikeButton from '@/components/common/LikeButton.vue';
 import { defineComponent } from 'vue';
 import useToggle from '@/lib/custom-hooks/useToggle';
 
@@ -30,6 +32,7 @@ export default defineComponent({
   },
   components: {
     DeleteButton,
+    LikeButton,
   },
 });
 </script>

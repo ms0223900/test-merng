@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ElToolTip effect="dark" :content="toolTipContent">
+    <ElTooltip effect="dark" :content="toolTipContent" placement="right">
       <ElButton icon="el-icon-delete" @click="$emit('open-popup', true)" />
-    </ElToolTip>
+    </ElTooltip>
     <ConfirmPopup
       :isOpen="isPopupOpen"
       @closePopup="$emit('open-popup', false)"
