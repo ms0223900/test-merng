@@ -29,7 +29,7 @@
 
 <script>
 import { singlePostProps } from '@/types';
-import CommentButton from './CommentButton.vue';
+import CommentButton from './Buttons/CommentButton.vue';
 
 export default {
   name: 'PostCardItem',

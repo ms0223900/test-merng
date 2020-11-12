@@ -1,25 +1,38 @@
 <template>
   <div class="hello">
-    <DeleteButton :isPopupOpen="toggle" @openPopup="setToggle" />
-    <LikeButton :user="null" :post="{}" :isLiked="true" />
     <PostCardItem v-bind="post" />
     <LoginedMenuBar :username="post.user.username" />
     <LogoutedMenuBar menuActiveItem="home" />
+    <PostForm v-model="inputValue" @submitForm="handleSubmit" />
   </div>
 </template>
 
 <script lang="ts">
-import DeleteButton from '@/components/common/DeleteButton.vue';
-import LikeButton from '@/components/common/LikeButton.vue';
 import PostCardItem from '@/components/common/PostCardItem.vue';
 import LoginedMenuBar from '@/components/common/LoginedMenuBar.vue';
 import LogoutedMenuBar from '@/components/common/LogoutedMenuBar.vue';
 import { postCardItemProps } from '@/__mocks/common.mock';
 import { defineComponent } from 'vue';
 import useToggle from '@/lib/custom-hooks/useToggle';
+import PostForm from './common/PostForm.vue';
 
 export default defineComponent({
   name: 'HelloWorld',
+  data() {
+    return ({
+      inputValue: '',
+    });
+  },
+  watch: {
+    inputValue(val) {
+      console.log(val);
+    },
+  },
+  methods: {
+    handleSubmit() {
+      window.alert(this.inputValue);
+    },
+  },
   setup() {
     const { toggle, handleToggle, setToggle } = useToggle();
 
@@ -39,11 +52,10 @@ export default defineComponent({
     msg: String,
   },
   components: {
-    DeleteButton,
-    LikeButton,
     PostCardItem,
     LoginedMenuBar,
     LogoutedMenuBar,
+    PostForm,
   },
 });
 </script>
