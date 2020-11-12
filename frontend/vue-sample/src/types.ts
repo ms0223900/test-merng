@@ -7,6 +7,11 @@ export interface BasicData {
   username: string;
   createdAt: string;
 }
+export const basicDataProps = {
+  id: String || Number,
+  username: String,
+  createdAt: String,
+};
 
 export interface User extends BasicData {
   email: string;
@@ -14,10 +19,17 @@ export interface User extends BasicData {
 }
 
 export type SingleLike = BasicData
+export const singleLikeProps = {
+  ...basicDataProps,
+};
 
 export interface SingleComment extends BasicData {
   content: string;
 }
+export const singleCommentProps = {
+  ...basicDataProps,
+  content: String,
+};
 
 export interface SinglePost extends BasicData {
   content: string;
@@ -26,3 +38,11 @@ export interface SinglePost extends BasicData {
   comments: SingleComment[];
   commentCount: number;
 }
+export const singlePostProps = {
+  ...basicDataProps,
+  content: String,
+  likes: Array(singleLikeProps),
+  likeCount: Number,
+  comments: Array(singleCommentProps),
+  commentCount: Number,
+};
