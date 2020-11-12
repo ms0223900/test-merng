@@ -41,6 +41,9 @@ export default {
     toPostLink() {
       return `/posts/${this.post.id}`;
     },
+    isThisUser() {
+      return !!(this.user && this.user.username === this.post.username);
+    },
   },
   components: {
     CommentButton,

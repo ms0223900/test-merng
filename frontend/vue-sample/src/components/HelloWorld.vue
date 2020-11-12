@@ -3,6 +3,8 @@
     <DeleteButton :isPopupOpen="toggle" @openPopup="setToggle" />
     <LikeButton :user="null" :post="{}" :isLiked="true" />
     <PostCardItem v-bind="post" />
+    <LoginedMenuBar :username="post.user.username" />
+    <LogoutedMenuBar menuActiveItem="home" />
   </div>
 </template>
 
@@ -10,6 +12,8 @@
 import DeleteButton from '@/components/common/DeleteButton.vue';
 import LikeButton from '@/components/common/LikeButton.vue';
 import PostCardItem from '@/components/common/PostCardItem.vue';
+import LoginedMenuBar from '@/components/common/LoginedMenuBar.vue';
+import LogoutedMenuBar from '@/components/common/LogoutedMenuBar.vue';
 import { postCardItemProps } from '@/__mocks/common.mock';
 import { defineComponent } from 'vue';
 import useToggle from '@/lib/custom-hooks/useToggle';
@@ -38,6 +42,8 @@ export default defineComponent({
     DeleteButton,
     LikeButton,
     PostCardItem,
+    LoginedMenuBar,
+    LogoutedMenuBar,
   },
 });
 </script>
