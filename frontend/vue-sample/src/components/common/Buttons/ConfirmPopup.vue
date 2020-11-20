@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import MyPopupWrapper from './wrappers/MyPopupWrapper.vue';
+import MyPopupWrapper from '../wrappers/MyPopupWrapper.vue';
 
 export default {
   name: 'ConfirmPopup',

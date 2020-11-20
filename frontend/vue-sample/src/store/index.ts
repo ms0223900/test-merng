@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { createStore } from 'vuex';
 
 export default createStore({
@@ -8,5 +9,8 @@ export default createStore({
   actions: {
   },
   modules: {
+  },
+  getters: {
+    createdTimeFromNow: () => (createdAt: string) => moment(createdAt).fromNow(),
   },
 });

@@ -15,7 +15,10 @@
         </ElButton>
       </div>
     </form>
-    <ErrorMessage />
+    <ErrorMessage
+      :error="error"
+      :message="message"
+    />
   </div>
 </template>
 

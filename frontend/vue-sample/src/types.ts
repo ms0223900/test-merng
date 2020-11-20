@@ -17,6 +17,11 @@ export interface User extends BasicData {
   email: string;
   token: string;
 }
+export const userProps = {
+  ...basicDataProps,
+  email: String,
+  token: String,
+};
 
 export type SingleLike = BasicData
 export const singleLikeProps = {

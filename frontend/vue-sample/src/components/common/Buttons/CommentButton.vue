@@ -2,7 +2,7 @@
   <ElTooltip effect="dark" content="Comment on post" placement="right">
     <RouterLink :to="commentLink">
       <ElButton>
-          <i class="el-icon-s-comment" />
+        <i class="el-icon-s-comment" />
         {{ commentCount }}
       </ElButton>
     </RouterLink>
