@@ -1,6 +1,13 @@
+import { DocumentNode } from 'graphql';
+
 export type ID = string | number
 
-export type Callback = (params?: any) => any
+export type Callback = (...params: any) => any
+export type MutationFn = (options: {
+  mutation: DocumentNode;
+  update?: Callback;
+  variables?: any;
+}) => any
 
 export interface BasicData {
   id: ID;

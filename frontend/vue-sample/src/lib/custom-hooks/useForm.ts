@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ref } from 'vue';
+import { reactive, ref, toRefs } from 'vue';
 import { Callback } from '@/types';
 
 export interface UseFormOptions<FormState extends { [x: string]: any }> {
@@ -16,10 +16,10 @@ function useForm<FormState extends { [x: string]: any }>({
   initFormState,
   onSubmitCallback,
 }: UseFormOptions<FormState>) {
-  const formValues = ref(initFormState);
+  let formValues = reactive(initFormState);
 
   const onChange = (event: any) => {
-    formValues.value = { ...formValues.value, [event.target.name]: event.target.value };
+    formValues = { ...formValues, [event.target.name]: event.target.value };
   };
 
   const onSubmit = (event: any) => {
@@ -28,7 +28,7 @@ function useForm<FormState extends { [x: string]: any }>({
   };
 
   const handleSetValue = (name: keyof FormState) => (value: string) => {
-    formValues.value = { ...formValues.value, [name]: value };
+    formValues = { ...formValues.value, [name]: value };
   };
 
   return {
