@@ -1,9 +1,18 @@
+import getInitUser from '@/lib/functions/getInitUser';
+import { User } from '@/types';
 import moment from 'moment';
 import { createStore } from 'vuex';
 
-export default createStore({
-  state: {
-  },
+export interface AuthState {
+  user: User | null;
+}
+
+const initState = {
+  user: getInitUser(),
+};
+
+export default createStore<AuthState>({
+  state: initState,
   mutations: {
   },
   actions: {
